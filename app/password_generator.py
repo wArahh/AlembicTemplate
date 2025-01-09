@@ -18,7 +18,7 @@ MSG_CLIPBOARD_FAILED = '[!] Failed to copy to clipboard: {error}'
 MSG_CLIPBOARD_UNSUPPORTED = '[!] Clipboard copy not supported on this OS.'
 MSG_ENTER_PASSWORD_LENGTH = f'Enter password length (default is {DEFAULT_PASSWORD_LENGTH}): '
 MSG_INVALID_LENGTH = '[!] Please enter a valid positive integer.'
-MSG_EXISTING_CREDENTIALS = '\n[!] Credentials for \'{name}\'2 already exist.'
+MSG_EXISTING_CREDENTIALS = '\n[!] Credentials for \'{name}\' already exist.'
 MSG_OPTIONS = '1. Add a new password manually\n2. Generate a new password\n3. Exit'
 MSG_INVALID_OPTION = '[!] Invalid choice. Please select 1, 2, or 3.'
 MSG_SUCCESS_EXIT = '[*] Successfully exited.'
@@ -31,6 +31,9 @@ MSG_RESULT = '\n[***] Result:'
 MSG_SERVICE_NAME_OUTPUT = 'Service Name: {name}'
 MSG_PASSWORD_OUTPUT = 'Password: {password}'
 MSG_ERROR_OCCURRED = '[!] An error occurred: {error}'
+MSG_GET_PASSWORD = 'Do you want to get password? (y/n): '
+MSG_CHOSE_123 = 'Choose an option (1/2/3): '
+MSG_MUST_BE_POSITIVE = '[!] Password length must be positive.'
 
 
 def copy_to_clipboard(
@@ -88,7 +91,7 @@ async def generate_password(
         try:
             length = int(length)
             if length <= 0:
-                raise ValueError('Password length must be positive.')
+                raise ValueError(MSG_MUST_BE_POSITIVE)
             break
         except ValueError:
             print(MSG_INVALID_LENGTH)
@@ -109,7 +112,7 @@ async def handle_existing_credentials(
     while True:
         print(MSG_EXISTING_CREDENTIALS.format(name=name))
         print(MSG_OPTIONS)
-        user_choice = input('Choose an option (1/2/3): ').strip()
+        user_choice = input(MSG_CHOSE_123).strip()
 
         if user_choice == '1':
             password = input(MSG_ENTER_PASSWORD)
@@ -160,7 +163,9 @@ async def handle_new_credentials(
     return name, password
 
 
-async def main(session: AsyncSession) -> Union[Tuple[str, str], str]:
+async def main(
+        session: AsyncSession
+) -> Union[Tuple[str, str], str]:
     """
     Main logic for handling credentials.
 
@@ -176,11 +181,19 @@ async def main(session: AsyncSession) -> Union[Tuple[str, str], str]:
         session=session,
         credentials_name=name
     )
-
-    if credentials and credentials.name == name:
-        return await handle_existing_credentials(session, name)
-    else:
-        return await handle_new_credentials(session, name)
+    while True:
+        action = input(MSG_GET_PASSWORD).strip().lower()
+        if action == 'y':
+            password = credentials.password
+            copy_to_clipboard(password)
+            return credentials.name, password
+        elif action == 'n':
+            if credentials and credentials.name == name:
+                return await handle_existing_credentials(session, name)
+            else:
+                return await handle_new_credentials(session, name)
+        else:
+            print(MSG_INVALID_CHOICE)
 
 
 async def run():
