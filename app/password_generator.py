@@ -7,10 +7,10 @@ from typing import Union, Tuple
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database.crud.create import create_credentials
-from app.database.crud.get import get_credentials
-from app.database.crud.update import update_password
-from app.database.main import sessionmaker
+from database.crud.create import create_credentials
+from database.crud.get import get_credentials
+from database.crud.update import update_password
+from database.main import sessionmaker
 
 DEFAULT_PASSWORD_LENGTH = 99
 MSG_CLIPBOARD_COPIED = '[\u2713] Copied to clipboard: {text}'

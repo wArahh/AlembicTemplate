@@ -1,7 +1,7 @@
 from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database.models import Credentials
+from ..models import Credentials
 
 
 async def update_password(
