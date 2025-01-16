@@ -182,18 +182,21 @@ async def main(
         credentials_name=name
     )
     while True:
-        action = input(MSG_GET_PASSWORD).strip().lower()
-        if action == 'y':
-            password = credentials.password
-            copy_to_clipboard(password)
-            return credentials.name, password
-        elif action == 'n':
-            if credentials and credentials.name == name:
-                return await handle_existing_credentials(session, name)
+        if credentials:
+            action = input(MSG_GET_PASSWORD).strip().lower()
+            if action == 'y':
+                password = credentials.password
+                copy_to_clipboard(password)
+                return credentials.name, password
+            elif action == 'n':
+                handler = handle_existing_credentials if credentials.name == name else handle_new_credentials
+                return await handler(session, name)
             else:
-                return await handle_new_credentials(session, name)
+                print(MSG_INVALID_CHOICE)
         else:
-            print(MSG_INVALID_CHOICE)
+            handler = handle_existing_credentials if credentials and credentials.name == name else handle_new_credentials
+            return await handler(session, name)
+
 
 
 async def run():
