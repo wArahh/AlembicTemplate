@@ -2,3 +2,5 @@ alembic==1.14.0
 asyncpg==0.30.0
 python-dotenv==1.0.1
 SQLAlchemy==2.0.36
+greenlet==3.2.3
+fluentogram==1.2.1

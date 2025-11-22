@@ -10,7 +10,7 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-from app.database.main import DATABASE_URL
+from app.database.engine import DATABASE_URL
 from app.database.models import Base
 
 config = context.config
@@ -24,8 +24,6 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 target_metadata = Base.metadata
-print('Tables discovered by Alembic:')
-print(target_metadata.tables.keys())
 
 
 def run_migrations_offline() -> None:

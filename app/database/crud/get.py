@@ -1,15 +1,24 @@
-from sqlalchemy import select, Sequence
+from sqlalchemy import select, exists
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..models import Credentials
+from app.database.models import Admin
 
 
-async def get_credentials(
-        session: AsyncSession,
-        credentials_name: str
-) -> Sequence[Credentials] | None:
-    """Getting certain credentials"""
-    statement = select(Credentials).where(Credentials.name == credentials_name)
-    return (
-        await session.execute(statement)
-    ).scalar_one_or_none()
+async def check_user_admin(
+        user_id: int,
+        db_session: AsyncSession,
+) -> bool:
+    """
+    :param db_session: async session.
+    :param user_id: id of user.
+
+    :return: True if admin, else False.
+    """
+    statement = select(
+        exists()
+    ).where(
+        Admin.user_id == user_id
+    )
+    print(statement)
+    result = await db_session.execute(statement)
+    return result.scalar()
