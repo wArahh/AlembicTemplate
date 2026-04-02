@@ -1,8 +1,30 @@
+import html
 import logging
-from logging.handlers import RotatingFileHandler
-from pathlib import Path
+import os
+import queue
+import asyncio
 
-from app.shared.config import Config
+import httpx
+from logging.handlers import RotatingFileHandler
+
+from app.app_instance.config import Config, FilePaths
+
+async_log_queue = asyncio.Queue(maxsize=1000)
+
+
+async def telegram_worker():
+    async with httpx.AsyncClient(timeout=3) as client:
+        while True:
+            chat_id, payload = await async_log_queue.get()
+            try:
+                await client.post(
+                    url=f'https://api.telegram.org/bot{Config.TELEGRAM_LOGGER_BOT_TOKEN}/sendMessage',
+                    json={**payload, 'chat_id': chat_id}
+                )
+            except Exception:
+                pass
+            finally:
+                async_log_queue.task_done()
 
 
 class BaseFormatter(logging.Formatter):
@@ -23,12 +45,17 @@ class TelegramFormatter(BaseFormatter):
     def format(self, record):
         emoji = self.get_emoji(record.levelname)
         asctime = self.formatTime(record, self.datefmt if hasattr(self, 'datefmt') else None)
+
+        raw_message = record.getMessage()
+        allow_html = getattr(record, 'tg_html', False)
+        message = raw_message if allow_html else html.escape(raw_message)
+
         formatted = (
             f'<b>{emoji} {record.levelname}</b> <code>[{asctime}]</code>\n'
             f'<b>Module:</b> <code>{record.name}</code>\n'
             f'<b>Function:</b> <code>{record.funcName}()</code>\n'
             f'<b>Location:</b> <code>{record.filename}:{record.lineno}</code>\n\n'
-            f'{record.msg}'
+            f'{message}'
         )
         return formatted
 
@@ -49,34 +76,52 @@ class ConsoleFormatter(BaseFormatter):
         return formatted
 
 
-_logger_initialized = False
+class TelegramLogHandler(logging.Handler):
+    def emit(self, record):
+        try:
+            log_entry = self.format(record)
+            payload = {
+                'text': log_entry[:4096],
+                'parse_mode': 'HTML',
+                'disable_web_page_preview': True
+            }
+
+            for chat_id in Config.TELEGRAM_LOG_RECEIVERS:
+                async_log_queue.put_nowait((chat_id, payload))
+        except queue.Full:
+            pass
 
 
 def configure_logging():
-    global _logger_initialized
-    if _logger_initialized:
-        return
-    _logger_initialized = True
-
-    root = Path(__file__).parent.parent
-    logs_dir = root / 'logs'
-    logs_dir.mkdir(exist_ok=True)
-    log_file = logs_dir / 'app.log'
-    log_file.touch(exist_ok=True)
+    telegram_handler = TelegramLogHandler()
+    telegram_handler.setLevel(logging.DEBUG if Config.DEBUG else logging.INFO)
+    telegram_handler.setFormatter(TelegramFormatter())
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(ConsoleFormatter())
 
     general_logger = logging.getLogger()
-    general_logger.setLevel(logging.INFO if not Config.DEBUG else logging.DEBUG)
+    general_logger.setLevel(logging.DEBUG if Config.DEBUG else logging.INFO)
     general_logger.addHandler(console_handler)
 
-    app_logger = logging.getLogger('app_logger')
-    app_handler = RotatingFileHandler(
-        filename=root / 'logs' / 'app.log',
+    app_instance_logger = logging.getLogger('app_instance_logger')
+    app_instance_handler = RotatingFileHandler(
+        filename=os.path.join(FilePaths.BASE_DIR, 'logs', 'app_instance_logger.log'),
         maxBytes=5 * 1024 * 1024,
         backupCount=3,
         encoding='utf-8'
     )
-    app_handler.setFormatter(ConsoleFormatter())
-    app_logger.addHandler(app_handler)
+    app_instance_handler.setFormatter(ConsoleFormatter())
+    app_instance_logger.addHandler(app_instance_handler)
+    app_instance_logger.addHandler(telegram_handler)
+
+    core_logger = logging.getLogger('core_logger')
+    core_handler = RotatingFileHandler(
+        filename=os.path.join(FilePaths.BASE_DIR, 'logs', 'core.log'),
+        maxBytes=5 * 1024 * 1024,
+        backupCount=3,
+        encoding='utf-8'
+    )
+    core_handler.setFormatter(ConsoleFormatter())
+    core_logger.addHandler(core_handler)
+    core_logger.addHandler(telegram_handler)

@@ -1,3 +1,3 @@
 import logging
 
-app_logger = logging.getLogger('app_logger')
+app_instance_logger = logging.getLogger('app_instance_logger')

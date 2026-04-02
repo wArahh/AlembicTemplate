@@ -4,38 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2b882f1-7a53-42c2-8bcf-97cd2923ca43" name="Changes" comment="edited readme">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/deleteme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/locales/en/LC_MESSAGES/txt.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/loggers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/i18n.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/shared/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/shared/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/shared/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AlembicTemplate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlembicTemplate.iml" afterDir="false" />
+    <list default="true" id="f2b882f1-7a53-42c2-8bcf-97cd2923ca43" name="Changes" comment="1y progress">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20d28538-513d-4716-b699-5fd2322a319b.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20d28538-513d-4716-b699-5fd2322a319b/storage_v2/_src_/database/sync_credentials.WItZAw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20d28538-513d-4716-b699-5fd2322a319b/storage_v2/_src_/database/sync_credentials.WItZAw/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20d28538-513d-4716-b699-5fd2322a319b/storage_v2/_src_/database/sync_credentials.WItZAw/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20d28538-513d-4716-b699-5fd2322a319b/storage_v2/_src_/database/sync_credentials.WItZAw/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2e1d1b7c-722b-465e-851a-f9f96e8044b8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21539e52-d070-463c-9607-88315a1b71bb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/21539e52-d070-463c-9607-88315a1b71bb.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic/versions/a4ad973b7470_credentials_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/crud/create.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/crud/get.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/crud/get.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/crud/update.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/password_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/locales/en/LC_MESSAGES/txt.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/loggers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/loggers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app_instance/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/i18n.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/utils.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +74,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
@@ -141,6 +125,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -154,8 +139,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.26830.99" />
-        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
       </set>
     </attachedChunks>
   </component>
@@ -183,7 +168,8 @@
       <workItem from="1737017395214" duration="338000" />
       <workItem from="1737888193848" duration="4670000" />
       <workItem from="1763798477709" duration="23000" />
-      <workItem from="1763798505206" duration="5114000" />
+      <workItem from="1763798505206" duration="5517000" />
+      <workItem from="1775131288475" duration="749000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -249,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737892545303</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1y progress">
+      <option name="closed" value="true" />
+      <created>1763827624086</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1763827624086</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,12 +258,29 @@
     <MESSAGE value="added correct path to start programm from terminal" />
     <MESSAGE value="added correct path to start program from terminal" />
     <MESSAGE value="edited readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited readme" />
+    <MESSAGE value="1y progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="1y progress" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/database/models.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/main.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/password_generator$get.coverage" NAME="get Coverage Results" MODIFIED="1736369196090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/database/crud" />
-    <SUITE FILE_PATH="coverage/AlembicTemplate$password_generator.coverage" NAME="run Coverage Results" MODIFIED="1763803002182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlembicTemplate$password_generator.coverage" NAME="run Coverage Results" MODIFIED="1763827470383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlembicTemplate$run.coverage" NAME="run Coverage Results" MODIFIED="1775131798770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlembicTemplate$env.coverage" NAME="env Coverage Results" MODIFIED="1737890406764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/alembic" />
+    <SUITE FILE_PATH="coverage/password_generator$get.coverage" NAME="get Coverage Results" MODIFIED="1736369196090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/database/crud" />
     <SUITE FILE_PATH="coverage/password_generator$password_generator.coverage" NAME="password_generator Coverage Results" MODIFIED="1736637560450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/password_generator$update.coverage" NAME="update Coverage Results" MODIFIED="1736392442870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/database/crud" />
   </component>
